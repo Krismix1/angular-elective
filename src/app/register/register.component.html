@@ -1,0 +1,91 @@
+<div class="user-selection">
+  <button type="button" (click)="selectForm('baby')"> Baby</button>
+  <button type="button" (click)="selectForm('babysitter')"> Babysitter</button>
+</div>
+
+<form [formGroup]="babysitterRegisterForm" novalidate (submit)="onBabysitterRegisterSubmit(babysitterRegisterForm)" [hidden]="isBaby">
+  <div class="form-control">
+    <label>First name
+      <input type="text" class="form-input" formControlName="firstName"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.firstName.errors?.required && babysitterRegisterForm.controls.firstName.touched && babysitterRegisterForm.controls.firstName.dirty">
+      Please fill first name.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Picture url
+      <input type="text" class="form-input" formControlName="picture"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.picture.errors?.required && babysitterRegisterForm.controls.picture.touched">
+      Please fill url with picture.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Postal code
+      <input type="text" class="form-input" formControlName="postalCode"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.postalCode.errors?.required && babysitterRegisterForm.controls.postalCode.touched">
+      Please fill postal code.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Age
+      <input type="number" class="form-input" formControlName="age"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.age.errors?.required && babysitterRegisterForm.controls.age.touched">
+      Please fill age.
+    </div>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.age.errors?.min">
+      Minimum age is 16 years.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Gender
+      <select class="form-input"
+            formControlName="gender" required >
+          <option>Female</option>
+          <option>Male</option>
+      </select>
+    </label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.gender.errors?.required && babysitterRegisterForm.controls.gender.touched">
+      Please fill gender.
+    </div>
+  </div>
+  <button type="submit">Register</button>
+
+  <p>Form value: {{ babysitterRegisterForm.value | json }}</p>
+  <p>Form status: {{ babysitterRegisterForm.status | json }}</p>
+</form>
+
+
+<form [formGroup]="babyRegisterForm" novalidate (submit)="onBabyRegisterSubmit(babyRegisterForm)" [hidden]="!isBaby">
+  <div class="form-control">
+    <label> Name
+      <input type="text" class="form-input" formControlName="name" required>
+    </label>
+    <div class="error" *ngIf="babyRegisterForm.controls.name.errors?.required && babyRegisterForm.controls.name.touched">
+      Please type name.
+    </div>
+  </div>
+  <div class="form-control">
+    <label> Months
+      <input type="number" class="form-input" formControlName="months" required>
+    </label>
+    <div class="error" *ngIf="babyRegisterForm.controls.months.errors?.required && babyRegisterForm.controls.months.touched">
+      Please type months.
+    </div>
+  </div>
+  <div class="form-control">
+    <label> Gender
+      <select id="gender" class="form-input"
+            formControlName="gender" required >
+          <option>Female</option>
+          <option>Male</option>
+      </select>
+    </label>
+    <div class="error" *ngIf="babyRegisterForm.controls.gender.errors?.required && babyRegisterForm.controls.gender.touched">
+      Please select gender.
+    </div>
+  </div>
+  <!-- Address, picture, postal code -->
+  <button type="submit">Register</button>
+
+  <p>Form status: {{babyRegisterForm.status | json}}</p>
+  <p>Form value: {{babyRegisterForm.value | json}}</p>
+</form>

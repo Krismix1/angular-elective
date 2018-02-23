@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
+.error {
+  background: pink;
+  opacity: 0.8;
+  border: 2px solid red;
+  border-radius: 10px;
+  padding: 1em;
+  color: black;
+  margin: 0.5em;
+  width: 12em;
+  text-align: center;
+}
+
+input {
+  border: 2px solid gray;
+  border-radius: 7px;
+  padding: 0.3em;
+}
+
+select {
+  padding: 3px;
+  border: 2px solid gray;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+
+.form-control {
+  margin: 1em;
+}
+
+.user-selection button {
+  margin: 0.3em;
+  padding: 1em;
+  background: #20bef2;
+  color: white;
+  border: 0.2em #0990CB solid;
+}
+
+.user-selection button:hover {
+  opacity: 0.8;
+}
