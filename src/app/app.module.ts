@@ -14,6 +14,7 @@ import { PortalComponent } from './portal/portal.component';
 import { BabyListComponent } from './baby-list/baby-list.component';
 import { BabysitterListComponent } from './babysitter-list/babysitter-list.component';
 import { AuthGuard } from './guards/auth-guard';
+import { AdminAuthGuard } from './guards/admin-auth-guard';
 import { AuthService } from './auth.service';
 
 
@@ -35,7 +36,7 @@ import { AuthService } from './auth.service';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, AdminAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

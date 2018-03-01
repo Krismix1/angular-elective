@@ -9,6 +9,7 @@ import { PortalComponent } from './portal/portal.component';
 import { BabyListComponent } from './baby-list/baby-list.component';
 import { BabysitterListComponent } from './babysitter-list/babysitter-list.component';
 import { AuthGuard } from './guards/auth-guard';
+import { AdminAuthGuard } from './guards/admin-auth-guard';
 
 const routes: Routes = [
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
   {
     path: 'portal',
     component: PortalComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminAuthGuard],
     children: [
       {
         path: 'babies',

@@ -8,14 +8,25 @@ import 'rxjs/add/operator/delay';
 export class AuthService {
   isLoggedIn = false;
   redirectUrl: string;
+  private loggedUser: any;
 
   constructor() { }
 
   login(): Observable<boolean> {
-    return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
+    return Observable.of(true).delay(1000).do(val => {
+      this.isLoggedIn = true;
+      this.loggedUser = {
+        "role": "ADMIN";
+      }
+    });
   }
 
   logout(): void {
     this.isLoggedIn = false;
+    this.loggedUser = undefined;
+  }
+
+  hasPermission(permission:string){
+    return this.loggedUser.role == permission;
   }
 }
