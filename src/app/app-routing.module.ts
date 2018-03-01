@@ -6,8 +6,9 @@ import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { PortalComponent } from './portal/portal.component';
-import { BabyListComponent} from './baby-list/baby-list.component';
-import { BabysitterListComponent} from './babysitter-list/babysitter-list.component';
+import { BabyListComponent } from './baby-list/baby-list.component';
+import { BabysitterListComponent } from './babysitter-list/babysitter-list.component';
+import { AuthGuard } from './guards/auth-guard';
 
 const routes: Routes = [
   {
@@ -29,13 +30,15 @@ const routes: Routes = [
       },
       {
         path: 'contact',
-        component: ContactComponent
+        component: ContactComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },
   {
     path: 'portal',
     component: PortalComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'babies',

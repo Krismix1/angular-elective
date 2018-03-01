@@ -13,6 +13,9 @@ import { HomeComponent } from './home/home.component';
 import { PortalComponent } from './portal/portal.component';
 import { BabyListComponent } from './baby-list/baby-list.component';
 import { BabysitterListComponent } from './babysitter-list/babysitter-list.component';
+import { AuthGuard } from './guards/auth-guard';
+import { AuthService } from './auth.service';
+
 
 
 @NgModule({
@@ -32,7 +35,7 @@ import { BabysitterListComponent } from './babysitter-list/babysitter-list.compo
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
