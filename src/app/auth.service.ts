@@ -16,7 +16,7 @@ export class AuthService {
     return Observable.of(true).delay(1000).do(val => {
       this.isLoggedIn = true;
       this.loggedUser = {
-        "role": "ADMIN";
+        "role": "ADMIN"
       }
     });
   }

@@ -12,17 +12,10 @@
     </div>
   </div>
   <div class="form-control">
-    <label>Picture url
-      <input type="text" class="form-input" formControlName="picture"/></label>
-    <div class="error" *ngIf="babysitterRegisterForm.controls.picture.errors?.required && babysitterRegisterForm.controls.picture.touched">
-      Please fill url with picture.
-    </div>
-  </div>
-  <div class="form-control">
-    <label>Postal code
-      <input type="text" class="form-input" formControlName="postalCode"/></label>
-    <div class="error" *ngIf="babysitterRegisterForm.controls.postalCode.errors?.required && babysitterRegisterForm.controls.postalCode.touched">
-      Please fill postal code.
+    <label>Last name
+      <input type="text" class="form-input" formControlName="lastName"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.lastName.errors?.required && babysitterRegisterForm.controls.lastName.touched && babysitterRegisterForm.controls.lastName.dirty">
+      Please fill last name.
     </div>
   </div>
   <div class="form-control">
@@ -33,6 +26,34 @@
     </div>
     <div class="error" *ngIf="babysitterRegisterForm.controls.age.errors?.min">
       Minimum age is 16 years.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Years of experience
+      <input type="number" class="form-input" formControlName="yearsOfExperience"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.yearsOfExperience.errors?.required && babysitterRegisterForm.controls.yearsOfExperience.touched">
+      Please fill years of experience.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Region
+      <input type="text" class="form-input" formControlName="region"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.region.errors?.required && babysitterRegisterForm.controls.region.touched">
+      Please type region.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Picture url
+      <input type="text" class="form-input" formControlName="picture"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.picture.errors?.required && babysitterRegisterForm.controls.picture.touched">
+      Please fill url with picture.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Phone
+      <input type="text" class="form-input" formControlName="phone"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.phone.errors?.required && babysitterRegisterForm.controls.phone.touched">
+      Please fill phone number.
     </div>
   </div>
   <div class="form-control">
@@ -56,18 +77,34 @@
 
 <form [formGroup]="babyRegisterForm" novalidate (submit)="onBabyRegisterSubmit(babyRegisterForm)" [hidden]="!isBaby">
   <div class="form-control">
-    <label> Name
-      <input type="text" class="form-input" formControlName="name" required>
+    <label> First name
+      <input type="text" class="form-input" formControlName="firstName" required>
     </label>
-    <div class="error" *ngIf="babyRegisterForm.controls.name.errors?.required && babyRegisterForm.controls.name.touched">
+    <div class="error" *ngIf="babyRegisterForm.controls.firstName.errors?.required && babyRegisterForm.controls.firstName.touched">
       Please type name.
     </div>
   </div>
   <div class="form-control">
-    <label> Months
-      <input type="number" class="form-input" formControlName="months" required>
+    <label> Picture
+      <input type="text" class="form-input" formControlName="picture" required>
     </label>
-    <div class="error" *ngIf="babyRegisterForm.controls.months.errors?.required && babyRegisterForm.controls.months.touched">
+    <div class="error" *ngIf="babyRegisterForm.controls.picture.errors?.required && babyRegisterForm.controls.picture.touched">
+      Please enter URL for picture.
+    </div>
+  </div>
+  <div class="form-control">
+    <label> Postal code
+      <input type="text" class="form-input" formControlName="postalCode" required>
+    </label>
+    <div class="error" *ngIf="babyRegisterForm.controls.postalCode.errors?.required && babyRegisterForm.controls.postalCode.touched">
+      Please type postal code.
+    </div>
+  </div>
+  <div class="form-control">
+    <label> Months
+      <input type="number" class="form-input" formControlName="age" required>
+    </label>
+    <div class="error" *ngIf="babyRegisterForm.controls.age.errors?.required && babyRegisterForm.controls.age.touched">
       Please type months.
     </div>
   </div>

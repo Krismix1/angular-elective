@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { Babysitter } from '../entities/babysitter';
 
 @Component({
   selector: 'app-babysitter-list',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BabysitterListComponent implements OnInit {
 
-  constructor() { }
+  private babysitters: Babysitter[];
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.babysitters = this.dataService.getBabysitters();
   }
 
 }

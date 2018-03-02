@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Baby } from '../entities/baby';
+import { Babysitter } from '../entities/babysitter';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-register',
@@ -9,9 +12,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   private babysitterRegisterForm: FormGroup;
   private babyRegisterForm: FormGroup;
-  private isBaby : boolean;
+  private isBaby: boolean;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private dataService: DataService) { }
 
   ngOnInit() {
     this.createForm();
@@ -21,31 +24,48 @@ export class RegisterComponent implements OnInit {
   createForm() {
     this.babysitterRegisterForm = this.fb.group({
       firstName: ['', Validators.required],
-      picture: ['', Validators.required],
-      postalCode: ['', Validators.required],
+      lastName: ['', Validators.required],
       age: ['', [Validators.required, Validators.min(16)]],
-      gender: ['', Validators.required]
+      yearsOfExperience: ['', Validators.required],
+      region: ['', Validators.required],
+      picture: ['', Validators.required],
+      gender: ['', Validators.required],
+      phone: ['', Validators.required]
     });
 
     this.babyRegisterForm = this.fb.group({
-      name: '',
-      months: '',
-      gender: ''
+      firstName: ['', Validators.required],
+      picture: ['', Validators.required],
+      postalCode: ['', Validators.required],
+      age: ['', [Validators.required, Validators.min(3)]],
+      gender: ['', Validators.required]
     });
   }
 
   onBabysitterRegisterSubmit(registerForm) {
-    console.log("Babysitter form", registerForm);
+    if (registerForm.valid) {
+      let babysitter: Babysitter = registerForm.value;
+      this.dataService.addBabysitter(babysitter);
+      registerForm.reset();
+    } else {
+      alert("Input don't meet requirements");
+    }
   }
 
   onBabyRegisterSubmit(registerForm) {
-    console.log("Baby form", registerForm);
+    if (registerForm.valid) {
+      let baby: Baby = registerForm.value;
+      this.dataService.addBaby(baby);
+      registerForm.reset();
+    } else {
+      alert("Input don't meet requirements");
+    }
   }
 
-  selectForm(user){
-    if(user =='baby'){
+  selectForm(user) {
+    if (user == 'baby') {
       this.isBaby = true;
-    }else if(user =='babysitter'){
+    } else if (user == 'babysitter') {
       this.isBaby = false;
     }
   }

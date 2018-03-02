@@ -1,4 +1,4 @@
-export class Sitter {
+export class Babysitter {
   public firstName: String;
   public lastName: String;
   public age: number;

@@ -16,6 +16,7 @@ import { BabysitterListComponent } from './babysitter-list/babysitter-list.compo
 import { AuthGuard } from './guards/auth-guard';
 import { AdminAuthGuard } from './guards/admin-auth-guard';
 import { AuthService } from './auth.service';
+import { DataService } from './data.service';
 
 
 
@@ -36,7 +37,7 @@ import { AuthService } from './auth.service';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard, AuthService, AdminAuthGuard],
+  providers: [AuthGuard, AuthService, AdminAuthGuard, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
