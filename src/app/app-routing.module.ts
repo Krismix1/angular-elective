@@ -20,21 +20,18 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    children: [
       {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'register',
-        component: RegisterComponent
-      },
-      {
-        path: 'contact',
-        component: ContactComponent,
-        canActivate: [AuthGuard]
-      }
-    ]
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'portal',

@@ -18,7 +18,7 @@ export class AdminAuthGuard implements CanActivate {
   checkPermission(url: string): boolean {
     if (!this.authService.isLoggedIn) {
       this.authService.redirectUrl = url;
-      this.router.navigate(["/home/login"]);
+      this.router.navigate(["/login"]);
 
       return false;
     }

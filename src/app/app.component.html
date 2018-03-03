@@ -1,16 +1,11 @@
 <nav class="navbar bg-dark">
-  <a routerLink="">Home</a>
-  <a routerLink="home/login">Login</a>
-  <a routerLink="home/register">Register</a>
-  <a routerLink="home/contact">Contact</a>
-  <a routerLink="portal">Portal</a>
+  <a class="nav-item" routerLink="">Home</a>
+  <a class="nav-item" routerLink="login">Login</a>
+  <a class="nav-item" routerLink="register">Register</a>
+  <a class="nav-item" routerLink="contact">Contact</a>
+  <a class="nav-item" routerLink="portal">Portal</a>
 </nav>
 
-<div style="text-align:center">
-  <h1>
-    Welcome to <i>{{ title }}</i>!
-  </h1>
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
-
-
-<router-outlet></router-outlet>

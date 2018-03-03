@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
 
-    this.router.navigate(["/home/login"]);
+    this.router.navigate(["/login"]);
     return false;
   }
 }
