@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     console.log(loginForm);
     if (loginForm.valid) {
       console.log("Send login request");
-      this.authService.login().subscribe(() => {
+      this.authService.login(loginForm.value.username, loginForm.value.password).subscribe(() => {
         console.log("now you are logged in");
         let redirectTo = this.authService.redirectUrl ? this.authService.redirectUrl : "/";
 

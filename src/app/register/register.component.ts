@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
       this.dataService.addBabysitter(babysitter);
       registerForm.reset();
     } else {
-      alert("Input don't meet requirements");
+      alert("Inputs don't meet requirements");
     }
   }
 
@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
       this.dataService.addBaby(baby);
       registerForm.reset();
     } else {
-      alert("Input don't meet requirements");
+      alert("Inputs don't meet requirements");
     }
   }
 

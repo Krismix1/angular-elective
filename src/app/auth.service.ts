@@ -12,13 +12,22 @@ export class AuthService {
 
   constructor() { }
 
-  login(): Observable<boolean> {
-    return Observable.of(true).delay(1000).do(val => {
-      this.isLoggedIn = true;
-      this.loggedUser = {
-        "role": "ADMIN"
-      }
-    });
+  login(username: string, password: string): Observable<boolean> {
+    if (username == "admin" && password == "admin") {
+      return Observable.of(true).delay(1000).do(val => {
+        this.isLoggedIn = true;
+        this.loggedUser = {
+          "role": "ADMIN"
+        }
+      });
+    } else {
+      return Observable.of(true).delay(1000).do(val => {
+        this.isLoggedIn = true;
+        this.loggedUser = {
+          "role": "USER"
+        }
+      });
+    }
   }
 
   logout(): void {
@@ -26,7 +35,7 @@ export class AuthService {
     this.loggedUser = undefined;
   }
 
-  hasPermission(permission:string){
+  hasPermission(permission: string) {
     return this.loggedUser.role == permission;
   }
 }
