@@ -9,6 +9,6 @@ describe('findasitter App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to Find a sitter!');
+    expect(page.getParagraphText()).toEqual('home works!');
   });
 });
