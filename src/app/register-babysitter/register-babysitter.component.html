@@ -1,0 +1,70 @@
+<form id="babysitter-form" [formGroup]="babysitterRegisterForm" novalidate (submit)="onFormSubmit(babysitterRegisterForm)">
+  <div class="form-control">
+    <label>First name
+      <input type="text" class="form-input" formControlName="firstName"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.firstName.errors?.required && babysitterRegisterForm.controls.firstName.touched && babysitterRegisterForm.controls.firstName.dirty">
+      Please fill first name.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Last name
+      <input type="text" class="form-input" formControlName="lastName"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.lastName.errors?.required && babysitterRegisterForm.controls.lastName.touched && babysitterRegisterForm.controls.lastName.dirty">
+      Please fill last name.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Age
+      <input type="number" class="form-input" formControlName="age"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.age.errors?.required && babysitterRegisterForm.controls.age.touched">
+      Please fill age.
+    </div>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.age.errors?.min">
+      Minimum age is 16 years.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Years of experience
+      <input type="number" class="form-input" formControlName="yearsOfExperience"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.yearsOfExperience.errors?.required && babysitterRegisterForm.controls.yearsOfExperience.touched">
+      Please fill years of experience.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Region
+      <input type="text" class="form-input" formControlName="region"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.region.errors?.required && babysitterRegisterForm.controls.region.touched">
+      Please type region.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Picture url
+      <input type="text" class="form-input" formControlName="picture"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.picture.errors?.required && babysitterRegisterForm.controls.picture.touched">
+      Please fill url with picture.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Phone
+      <input type="text" class="form-input" formControlName="phone"/></label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.phone.errors?.required && babysitterRegisterForm.controls.phone.touched">
+      Please fill phone number.
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Gender
+      <select id="babysitterGender" class="form-input"
+            formControlName="gender" required >
+          <option>Female</option>
+          <option>Male</option>
+      </select>
+    </label>
+    <div class="error" *ngIf="babysitterRegisterForm.controls.gender.errors?.required && babysitterRegisterForm.controls.gender.touched">
+      Please fill gender.
+    </div>
+  </div>
+  <button type="submit">Register</button>
+
+  <p>Form value: {{ babysitterRegisterForm.value | json }}</p>
+  <p>Form status: {{ babysitterRegisterForm.status | json }}</p>
+</form>

@@ -6,37 +6,37 @@ function getPage() {
     babyButton: $$(".user-selection button").get(0),
     babysitterButton: $$(".user-selection button").get(1),
     babyForm: {
-      self: element(by.css("#baby-form")),
+      self: element(by.css("form")),
       inputs: {
-        firstNameInput: $("#baby-form input[formControlName='firstName']"),
-        pictureUrlInput: $("#baby-form input[formControlName='picture']"),
-        postalCodeInput: $("#baby-form input[formControlName='postalCode']"),
-        ageInput: $("#baby-form input[formControlName='age']"),
+        firstNameInput: $("form input[formControlName='firstName']"),
+        pictureUrlInput: $("form input[formControlName='picture']"),
+        postalCodeInput: $("form input[formControlName='postalCode']"),
+        ageInput: $("form input[formControlName='age']"),
         genderSelection: {
           self: $("#babyGender"),
           options: {
-            maleOption: element(by.cssContainingText('#baby-form option', 'Male')),
-            femaleOption: element(by.cssContainingText('#baby-form option', 'Female'))
+            maleOption: element(by.cssContainingText('form option', 'Male')),
+            femaleOption: element(by.cssContainingText('form option', 'Female'))
           }
         }
       },
       submitBtn: $("#babySubmitBtn")
     },
     babysitterForm: {
-      self: element(by.css("#babysitter-form")),
+      self: element(by.css("form")),
       inputs: {
-        firstNameInput: $("#babysitter-form input[formControlName='firstName']"),
-        lastNameInput: $("#babysitter-form input[formControlName='lastName']"),
-        ageInput: $("#babysitter-form input[formControlName='age']"),
-        yearsOfExperienceInput: $("#babysitter-form input[formControlName='yearsOfExperience']"),
-        regionInput: $("#babysitter-form input[formControlName='region']"),
-        pictureUrlInput: $("#babysitter-form input[formControlName='picture']"),
-        phoneInput: $("#babysitter-form input[formControlName='phone']"),
+        firstNameInput: $("form input[formControlName='firstName']"),
+        lastNameInput: $("form input[formControlName='lastName']"),
+        ageInput: $("form input[formControlName='age']"),
+        yearsOfExperienceInput: $("form input[formControlName='yearsOfExperience']"),
+        regionInput: $("form input[formControlName='region']"),
+        pictureUrlInput: $("form input[formControlName='picture']"),
+        phoneInput: $("form input[formControlName='phone']"),
         genderSelection: {
           self: $("#babysitterGender"),
           options: {
-            maleOption: element(by.cssContainingText('#babysitter-form option', 'Male')),
-            femaleOption: element(by.cssContainingText('#babysitter-form option', 'Female'))
+            maleOption: element(by.cssContainingText('form option', 'Male')),
+            femaleOption: element(by.cssContainingText('form option', 'Female'))
           }
         }
       }
@@ -57,18 +57,14 @@ describe('Page: Register baby', () => {
     $$(".user-selection").then(function(elemsAfter) {
       expect(elemsAfter.length).toEqual(1);
     });
-
-    $$("form").then((elements) => {
-      expect(elements.length).toEqual(2);
-    });
   });
 
   it('2. Should display register baby form', () => {
     page.babyButton.click();
-
-    expect(page.babyForm.self.isDisplayed()).toBe(true);
-    expect(page.babysitterForm.self.isDisplayed()).toBe(false);
-
+    expect(page.babyForm.self.isPresent()).toBe(true);
+    $$("form input").then(elements => {
+      expect(elements.length).toBe(4);
+    });
   });
 
   it('3. Should fill fields for baby form', () => {
@@ -112,14 +108,19 @@ describe('Page: Register baby', () => {
 });
 
 describe("Page: Register babysitter", function() {
+
+  beforeAll(() => {
+    browser.get('/register');
+    getPage();
+  });
+
   it('1. Should display register babysitter form', () => {
     browser.get("/register")
-
     page.babysitterButton.click();
-
-    expect(page.babyForm.self.isDisplayed()).toBe(false);
     expect(page.babysitterForm.self.isDisplayed()).toBe(true);
-
+    $$("form input").then(elements => {
+      expect(elements.length).toBe(7);
+    });
   });
 
   it('2. Should fill fields for babysitter form', () => {

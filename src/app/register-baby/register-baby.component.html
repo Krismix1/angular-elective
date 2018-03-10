@@ -1,0 +1,51 @@
+<form [formGroup]="babyRegisterForm" novalidate (submit)="onFormSubmit(babyRegisterForm)">
+  <div class="form-control">
+    <label> First name
+      <input type="text" class="form-input" formControlName="firstName" required>
+    </label>
+    <div class="error" *ngIf="babyRegisterForm.controls.firstName.errors?.required && babyRegisterForm.controls.firstName.touched">
+      Please type name.
+    </div>
+  </div>
+  <div class="form-control">
+    <label> Picture
+      <input type="text" class="form-input" formControlName="picture" required>
+    </label>
+    <div class="error" *ngIf="babyRegisterForm.controls.picture.errors?.required && babyRegisterForm.controls.picture.touched">
+      Please enter URL for picture.
+    </div>
+  </div>
+  <div class="form-control">
+    <label> Postal code
+      <input type="text" class="form-input" formControlName="postalCode" required>
+    </label>
+    <div class="error" *ngIf="babyRegisterForm.controls.postalCode.errors?.required && babyRegisterForm.controls.postalCode.touched">
+      Please type postal code.
+    </div>
+  </div>
+  <div class="form-control">
+    <label> Months
+      <input type="number" class="form-input" formControlName="age" required>
+    </label>
+    <div class="error" *ngIf="babyRegisterForm.controls.age.errors?.required && babyRegisterForm.controls.age.touched">
+      Please type months.
+    </div>
+  </div>
+  <div class="form-control">
+    <label> Gender
+      <select id="babyGender" class="form-input"
+            formControlName="gender" required >
+          <option>Female</option>
+          <option>Male</option>
+      </select>
+    </label>
+    <div class="error" *ngIf="babyRegisterForm.controls.gender.errors?.required && babyRegisterForm.controls.gender.touched">
+      Please select gender.
+    </div>
+  </div>
+  <!-- Address, picture, postal code -->
+  <button type="submit" id="babySubmitBtn">Register</button>
+
+  <p>Form status: {{babyRegisterForm.status | json}}</p>
+  <p>Form value: {{babyRegisterForm.value | json}}</p>
+</form>

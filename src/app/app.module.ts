@@ -17,6 +17,8 @@ import { AuthGuard } from './guards/auth-guard';
 import { AdminAuthGuard } from './guards/admin-auth-guard';
 import { AuthService } from './auth.service';
 import { DataService } from './data.service';
+import { RegisterBabyComponent } from './register-baby/register-baby.component';
+import { RegisterBabysitterComponent } from './register-babysitter/register-babysitter.component';
 
 
 
@@ -30,7 +32,9 @@ import { DataService } from './data.service';
     HomeComponent,
     PortalComponent,
     BabyListComponent,
-    BabysitterListComponent
+    BabysitterListComponent,
+    RegisterBabyComponent,
+    RegisterBabysitterComponent
   ],
   imports: [
     BrowserModule,
