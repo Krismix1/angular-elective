@@ -17,4 +17,11 @@ export class BabyListComponent implements OnInit {
     this.babies = this.dataService.getBabies();
   }
 
+  editBaby(baby: Baby): void {
+    this.dataService.editBaby(baby);
+  }
+
+  deleteBaby(baby: Baby): void {
+    this.dataService.deleteBaby(baby);
+  }
 }

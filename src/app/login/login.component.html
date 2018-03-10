@@ -1,7 +1,7 @@
 <form [formGroup]="loginForm" novalidate (submit)="onSubmitLogin(loginForm)">
   <div class="form-control">
     <label>Username
-  <input type="text" class="form-input" formControlName="username" /></label>
+  <input type="text" class="form-input" formControlName="username" autofocus/></label>
     <div class="error" *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
       Please enter username.
     </div>
@@ -13,5 +13,5 @@
       Please enter password.
     </div>
   </div>
-  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  <button class="btn btn-positive" type="submit" [disabled]="loginForm.invalid">Login</button>
 </form>

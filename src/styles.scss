@@ -41,6 +41,21 @@ select {
   background-color: #f1f1f1;
 }
 
+.btn {
+    border: none;
+    background: white;
+    padding: .5em 3em;
+}
+
+.btn:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.list-item {
+    margin: 1em 0;
+}
+
 .form-control {
   margin: 1em;
 }
@@ -51,20 +66,16 @@ select {
   background: #20bef2;
   color: white;
   // border: 0.2em #0990CB solid;
-  border: 0;
-  cursor: pointer;
 }
 
-.user-selection button:hover {
+.btn:hover {
   opacity: 0.8;
 }
 
-form button {
-  border: 0;
+.btn-positive {
   display: block;
   padding: 1em 3em;
   background: #A5F883;
   color: #003A61;
   margin-bottom: 1em;
-  cursor: pointer;
 }

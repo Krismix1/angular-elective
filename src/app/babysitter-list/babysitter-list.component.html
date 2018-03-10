@@ -1,5 +1,7 @@
 <div class="list-container">
   <div class="list-item" *ngFor="let babysitter of babysitters">
     {{babysitter.firstName + ' ' + babysitter.lastName}}
+    <button class="btn" type="button" (click)="editBabysitter(babysitter)">Edit</button>
+    <button class="btn" type="button" (click)="deleteBabysitter(babysitter)">Delete</button>
   </div>
 </div>

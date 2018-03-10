@@ -85,4 +85,22 @@ export class DataService {
     this.babysitters.push(babysitter);
   }
 
+  deleteBaby(baby: Baby): void {
+    let index = this.babies.findIndex(el => el.firstName == baby.firstName);
+    this.babies.splice(index, 1);
+    console.log(this.babies);
+  }
+
+  deleteBabysitter(babysitter: Babysitter): void {
+    let index = this.babysitters.findIndex(el => el.firstName == babysitter.firstName);
+    this.babysitters.splice(index, 1);
+  }
+
+  editBaby(baby: Baby): void {
+    console.log("editing", baby);
+  }
+
+  editBabysitter(babysitter: Babysitter): void {
+    console.log("editing", babysitter);
+  }
 }
