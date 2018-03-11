@@ -44,7 +44,8 @@
     </div>
   </div>
   <!-- Address, picture, postal code -->
-  <button type="submit" id="babySubmitBtn">Register</button>
+  <button class="btn btn-positive" type="submit" id="babySubmitBtn" *ngIf="!isEdit">Register</button>
+  <button class="btn btn-positive" type="button" *ngIf="isEdit" (click)="onEditButton(babyRegisterForm)">Edit</button>
 
   <p>Form status: {{babyRegisterForm.status | json}}</p>
   <p>Form value: {{babyRegisterForm.value | json}}</p>

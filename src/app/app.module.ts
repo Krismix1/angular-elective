@@ -19,6 +19,7 @@ import { AuthService } from './auth.service';
 import { DataService } from './data.service';
 import { RegisterBabyComponent } from './register-baby/register-baby.component';
 import { RegisterBabysitterComponent } from './register-babysitter/register-babysitter.component';
+import { EditBabyComponent } from './edit-baby/edit-baby.component';
 
 
 
@@ -34,7 +35,8 @@ import { RegisterBabysitterComponent } from './register-babysitter/register-baby
     BabyListComponent,
     BabysitterListComponent,
     RegisterBabyComponent,
-    RegisterBabysitterComponent
+    RegisterBabysitterComponent,
+    EditBabyComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ export class DataService {
 
   private babies: Baby[] = [
     {
+      "id": 0,
       "firstName": "Oliver",
       "picture": "N/A",
       "postalCode": "2620",
@@ -15,6 +16,7 @@ export class DataService {
       "gender": "Male"
     },
     {
+      "id": 1,
       "firstName": "Alice",
       "picture": "http://google.com",
       "postalCode": "2000",
@@ -78,6 +80,11 @@ export class DataService {
   }
 
   addBaby(baby: Baby): void {
+    // find last id, then assign next id for new baby
+    let last_id = Math.max(...this.babies
+      .map(baby_ => baby_.id));
+    baby.id = last_id + 1;
+
     this.babies.push(baby);
   }
 
@@ -97,10 +104,17 @@ export class DataService {
   }
 
   editBaby(baby: Baby): void {
+    const id = baby.id;
+    const index = this.babies.findIndex(el => el.id == id);
+    this.babies[index] = baby;
     console.log("editing", baby);
   }
 
   editBabysitter(babysitter: Babysitter): void {
     console.log("editing", babysitter);
+  }
+
+  getBaby(id:number):Baby{
+    return this.babies.find(baby => baby.id == id);
   }
 }

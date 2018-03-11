@@ -10,6 +10,7 @@ import { BabyListComponent } from './baby-list/baby-list.component';
 import { BabysitterListComponent } from './babysitter-list/babysitter-list.component';
 import { AuthGuard } from './guards/auth-guard';
 import { AdminAuthGuard } from './guards/admin-auth-guard';
+import { EditBabyComponent } from './edit-baby/edit-baby.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,11 @@ const routes: Routes = [
     children: [
       {
         path: 'babies',
-        component: BabyListComponent
+        component: BabyListComponent,
+        children: [{
+          path: 'edit/:id',
+          component: EditBabyComponent
+        }]
       },
       {
         path: 'babysitters',

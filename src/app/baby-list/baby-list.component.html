@@ -1,7 +1,10 @@
-<div class="list-container">
-  <div class="list-item" *ngFor="let baby of babies">
-    {{baby.firstName}}
-    <button class="btn" type="button" (click)="editBaby(baby)">Edit</button>
-    <button class="btn" type="button" (click)="deleteBaby(baby)">Delete</button>
+<div id="wrapper">
+  <div class="list-container">
+    <div class="list-item" *ngFor="let baby of babies">
+      {{baby.firstName}}
+      <a class="btn" type="button" routerLink="/portal/babies/edit/{{baby.id}}">Edit</a>
+      <button class="btn" type="button" (click)="deleteBaby(baby)">Delete</button>
+    </div>
   </div>
+  <router-outlet></router-outlet>
 </div>
