@@ -1,42 +1,28 @@
 import { LoginPage } from './login.po';
+import { RegisterBabyPage } from './register-baby.po';
+import { RegisterBabysitterPage } from './register-babysitter.po';
 
 let page = {}
 
 function getPage() {
   page = {
-    babyButton: $$(".user-selection button").get(0),
-    babysitterButton: $$(".user-selection button").get(1),
     babyForm: {
       self: element(by.css("form")),
       inputs: {
-        firstNameInput: $("form input[formControlName='firstName']"),
-        pictureUrlInput: $("form input[formControlName='picture']"),
-        postalCodeInput: $("form input[formControlName='postalCode']"),
-        ageInput: $("form input[formControlName='age']"),
         genderSelection: {
           self: $("#babyGender"),
           options: {
-            maleOption: element(by.cssContainingText('form option', 'Male')),
-            femaleOption: element(by.cssContainingText('form option', 'Female'))
+            maleOption: element(by.cssContainingText('form option', 'Male'))
           }
         }
-      },
-      submitBtn: $("#babySubmitBtn")
+      }
     },
     babysitterForm: {
       self: element(by.css("form")),
       inputs: {
-        firstNameInput: $("form input[formControlName='firstName']"),
-        lastNameInput: $("form input[formControlName='lastName']"),
-        ageInput: $("form input[formControlName='age']"),
-        yearsOfExperienceInput: $("form input[formControlName='yearsOfExperience']"),
-        regionInput: $("form input[formControlName='region']"),
-        pictureUrlInput: $("form input[formControlName='picture']"),
-        phoneInput: $("form input[formControlName='phone']"),
         genderSelection: {
           self: $("#babysitterGender"),
           options: {
-            maleOption: element(by.cssContainingText('form option', 'Male')),
             femaleOption: element(by.cssContainingText('form option', 'Female'))
           }
         }
@@ -48,14 +34,14 @@ function getPage() {
 describe('Page: Register baby', () => {
 
   let loginPage = new LoginPage();
+  let registerBabyPage = new RegisterBabyPage();
 
   beforeAll(() => {
-    browser.get('/register');
+    registerBabyPage.navigateTo();
     getPage();
   });
 
   it('1. Should load html', () => {
-
     // element.all(by.css()) is equivalent to $$
     $$(".user-selection").then(function(elemsAfter) {
       expect(elemsAfter.length).toEqual(1);
@@ -63,7 +49,6 @@ describe('Page: Register baby', () => {
   });
 
   it('2. Should display register baby form', () => {
-    page.babyButton.click();
     expect(page.babyForm.self.isPresent()).toBe(true);
     $$("form input").then(elements => {
       expect(elements.length).toBe(4);
@@ -71,19 +56,13 @@ describe('Page: Register baby', () => {
   });
 
   it('3. Should fill fields for baby form', () => {
-    page.babyForm.inputs.firstNameInput.sendKeys("Test first name");
-    page.babyForm.inputs.pictureUrlInput.sendKeys("Test picture url");
-    page.babyForm.inputs.postalCodeInput.sendKeys("Test postal 2000");
-    page.babyForm.inputs.ageInput.sendKeys("10");
-
-    page.babyForm.inputs.genderSelection.options.femaleOption.click();
-
+    registerBabyPage.fillValidForm();
     expect(page.babyForm.self.getAttribute('class')).toMatch('ng-valid');
   });
 
   it('4. Should submit new baby', () => {
 
-    page.babyForm.submitBtn.click().then(function() {
+    registerBabyPage.submitForm().then(function() {
       // Fields should be empty after submit
       expect(page.babyForm.inputs.firstNameInput.getText()).toBe("");
       expect(page.babyForm.inputs.pictureUrlInput.getText()).toBe("");
@@ -110,14 +89,14 @@ describe('Page: Register baby', () => {
 
 describe("Page: Register babysitter", function() {
 
+  let registerBabysitterPage = new RegisterBabysitterPage();
+
   beforeAll(() => {
-    browser.get('/register');
+    registerBabysitterPage.navigateTo();
     getPage();
   });
 
   it('1. Should display register babysitter form', () => {
-    browser.get("/register")
-    page.babysitterButton.click();
     expect(page.babysitterForm.self.isDisplayed()).toBe(true);
     $$("form input").then(elements => {
       expect(elements.length).toBe(7);
@@ -125,16 +104,7 @@ describe("Page: Register babysitter", function() {
   });
 
   it('2. Should fill fields for babysitter form', () => {
-    page.babysitterForm.inputs.firstNameInput.sendKeys("Test first name");
-    page.babysitterForm.inputs.lastNameInput.sendKeys("Test last name");
-    page.babysitterForm.inputs.ageInput.sendKeys("23");
-    page.babysitterForm.inputs.yearsOfExperienceInput.sendKeys("8");
-    page.babysitterForm.inputs.regionInput.sendKeys("Test region");
-    page.babysitterForm.inputs.pictureUrlInput.sendKeys("Test picture url");
-    page.babysitterForm.inputs.phoneInput.sendKeys("Test 987654321");
-
-    page.babysitterForm.inputs.genderSelection.options.maleOption.click();
-
+    registerBabysitterPage.fillValidForm();
     expect(page.babysitterForm.self.getAttribute('class')).toMatch('ng-valid');
   });
 });
