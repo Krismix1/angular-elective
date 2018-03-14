@@ -1,3 +1,4 @@
+import { LoginPage } from './login.po';
 
 let page = {}
 
@@ -46,6 +47,8 @@ function getPage() {
 
 describe('Page: Register baby', () => {
 
+  let loginPage = new LoginPage();
+
   beforeAll(() => {
     browser.get('/register');
     getPage();
@@ -89,14 +92,12 @@ describe('Page: Register baby', () => {
       browser.get("/portal/babies");
       // should redirect to login page
       expect(browser.driver.getCurrentUrl()).toMatch('/login');
-      element(by.css("input[type='text']")).sendKeys('admin');
-      element(by.css("input[type='password']")).sendKeys('admin');
-
-      // on successful login, should redirect back
-      element(by.css("button[type='submit']")).click().then(function() {
+      loginPage.adminLogin().then(function() {
         browser.waitForAngular();
+        // on successful login, should redirect back
         expect(browser.driver.getCurrentUrl()).toMatch('/portal/babies');
       }, 10000);
+
       // the page should contain the new baby
       browser.waitForAngular();
       $$(".list-item").then(elements => {

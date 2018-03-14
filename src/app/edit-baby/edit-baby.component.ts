@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
+import { Baby } from '../entities/baby';
 
 @Component({
   selector: 'app-edit-baby',
@@ -24,7 +25,7 @@ export class EditBabyComponent implements OnInit {
   }
 
   showBabyDetails(): void {
-    const id = this.route.snapshot.paramMap.get("id");
+    const id = parseInt(this.route.snapshot.paramMap.get("id"));
     this.baby = this.dataService.getBaby(id);
   }
 }
