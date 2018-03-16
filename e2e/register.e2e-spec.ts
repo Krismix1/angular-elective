@@ -64,10 +64,10 @@ describe('Page: Register baby', () => {
 
     registerBabyPage.submitForm().then(function() {
       // Fields should be empty after submit
-      expect(page.babyForm.inputs.firstNameInput.getText()).toBe("");
-      expect(page.babyForm.inputs.pictureUrlInput.getText()).toBe("");
-      expect(page.babyForm.inputs.postalCodeInput.getText()).toBe("");
-      expect(page.babyForm.inputs.ageInput.getText()).toBe("");
+      expect(registerBabyPage.firstNameField().getAttribute('value')).toBe("");
+      expect(registerBabyPage.pictureField().getAttribute('value')).toBe("");
+      expect(registerBabyPage.postalCodeField().getAttribute('value')).toBe("");
+      expect(registerBabyPage.ageField().getAttribute('value')).toBe("");
       browser.get("/portal/babies");
       // should redirect to login page
       expect(browser.driver.getCurrentUrl()).toMatch('/login');

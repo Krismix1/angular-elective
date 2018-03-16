@@ -1,7 +1,7 @@
 <div id="wrapper">
   <div class="list-container">
     <div class="list-item" *ngFor="let baby of babies">
-      {{baby.firstName}}
+      <div class="baby-description">{{baby.firstName}}</div>
       <a class="btn" type="button" routerLink="/portal/babies/edit/{{baby.id}}">Edit</a>
       <button class="btn" type="button" (click)="deleteBaby(baby)">Delete</button>
     </div>

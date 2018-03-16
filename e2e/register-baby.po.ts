@@ -12,10 +12,10 @@ export class RegisterBabyPage {
   }
 
   fillValidForm() {
-    $("form input[formControlName='firstName']").sendKeys("Test first name");
-    $("form input[formControlName='picture']").sendKeys("Test picture url");
-    $("form input[formControlName='postalCode']").sendKeys("Test postal 2000");
-    $("form input[formControlName='age']").sendKeys("10");
+    this.firstNameField().sendKeys("Test first name");
+    this.pictureField().sendKeys("Test picture url");
+    this.postalCodeField().sendKeys("Test postal 2000");
+    this.ageField().sendKeys("10");
 
     element(by.cssContainingText('form option', 'Female')).click();
   }
@@ -26,5 +26,21 @@ export class RegisterBabyPage {
 
   isEmpty() {
 
+  }
+
+  firstNameField() {
+    return $("form input[formControlName='firstName']");
+  }
+
+  postalCodeField() {
+    return $("form input[formControlName='postalCode']");
+  }
+
+  pictureField() {
+    return $("form input[formControlName='picture']");
+  }
+
+  ageField() {
+    return $("form input[formControlName='age']");
   }
 }
