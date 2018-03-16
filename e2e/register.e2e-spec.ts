@@ -1,6 +1,7 @@
 import { LoginPage } from './login.po';
 import { RegisterBabyPage } from './register-baby.po';
 import { RegisterBabysitterPage } from './register-babysitter.po';
+import { element, by, $, $$, browser } from 'protractor';
 
 let page = {}
 

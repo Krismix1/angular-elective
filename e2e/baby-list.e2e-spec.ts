@@ -1,5 +1,6 @@
 import { LoginPage } from './login.po';
 import { RegisterBabyPage } from './register-baby.po';
+import { browser, $, $$ } from 'protractor';
 
 describe("Page: Baby list", () => {
   let loginPage;

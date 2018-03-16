@@ -1,4 +1,4 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, $$, $ } from 'protractor';
 
 export class RegisterBabysitterPage {
   navigateTo() {
@@ -22,7 +22,7 @@ export class RegisterBabysitterPage {
     element(by.cssContainingText('form option', 'Male')).click();
   }
 
-  submitForm(){
+  submitForm() {
     return $("#babysitterSubmitBtn").click();
   }
 }
